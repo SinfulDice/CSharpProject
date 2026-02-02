@@ -1,0 +1,47 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="MyCSharpGame.Windows.InfosWindow"
+             Width="900"
+             Height="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="600"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" 
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   Margin="25"
+                   TextWrapping="Wrap"
+                   TextAlignment="Center"
+                   Text="Choose the name of your character. There can only be a maximum of 32 letters.&#x0a; Don't start or end your name with spaces. Your name can't be null.">
+            
+        </TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="435"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="435"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" 
+                MaxLength="32"
+                Watermark="input your name here"
+                Name="TextBox"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top">
+            </TextBox>
+            <Button Grid.Column="2"
+                    Name="NextButton"
+                    Click="NextButton_OnClick"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top">
+                Next
+            </Button>
+        </Grid>
+    </Grid>
+    
+</UserControl>

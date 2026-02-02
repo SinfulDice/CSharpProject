@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="MyCSharpGame/MainWindow.axaml" value="MyCSharpGame/MyCSharpGame.csproj" />
+        <entry key="MyCSharpGame/Windows/CharacterSheetWindow.axaml" value="MyCSharpGame/MyCSharpGame.csproj" />
+        <entry key="MyCSharpGame/Windows/ClassWindow.axaml" value="MyCSharpGame/MyCSharpGame.csproj" />
+        <entry key="MyCSharpGame/Windows/Infos/CaracteristicsWindow.axaml" value="MyCSharpGame/MyCSharpGame.csproj" />
+        <entry key="MyCSharpGame/Windows/Infos/ClassWindow.axaml" value="MyCSharpGame/MyCSharpGame.csproj" />
+        <entry key="MyCSharpGame/Windows/Infos/HeightWeightAgeWindow.axaml" value="MyCSharpGame/MyCSharpGame.csproj" />
+        <entry key="MyCSharpGame/Windows/Infos/InfosWindow.axaml" value="MyCSharpGame/MyCSharpGame.csproj" />
+        <entry key="MyCSharpGame/Windows/Infos/RaceWindow.axaml" value="MyCSharpGame/MyCSharpGame.csproj" />
+        <entry key="MyCSharpGame/Windows/InfosWindow.axaml" value="MyCSharpGame/MyCSharpGame.csproj" />
+        <entry key="MyCSharpGame/Windows/MenuWindow.axaml" value="MyCSharpGame/MyCSharpGame.csproj" />
+        <entry key="MyCSharpGame/Windows/PlayWindow.axaml" value="MyCSharpGame/MyCSharpGame.csproj" />
+        <entry key="MyCSharpGame/Windows/RaceWindow.axaml" value="MyCSharpGame/MyCSharpGame.csproj" />
+        <entry key="MyCSharpGame/Windows/SettingsWindow.axaml" value="MyCSharpGame/MyCSharpGame.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

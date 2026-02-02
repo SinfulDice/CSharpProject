@@ -1,0 +1,89 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:myCSharpGame="clr-namespace:MyCSharpGame"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="MyCSharpGame.Windows.RaceWindow">
+    
+    <UserControl.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Text" Value=""/>
+        </Style>
+        
+        <Style Selector="Button">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Margin" Value="25"/>
+        </Style>
+    </UserControl.Styles>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="600"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" 
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   Margin="25">
+            Choose the race of your character.
+        </TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="180"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Grid.Column="0"
+                       Name="InfosHumanRace"/>
+            <Button Grid.Column="0"
+                    Name="_HumanRace"
+                    Click="HumanRace_OnClick"
+                    Content="Human">
+            </Button>
+            
+            <TextBlock Grid.Column="1"
+                       Name="InfosElfRace"/>
+            <Button Grid.Column="1"
+                    Name="_ElfRace"
+                    Click="ElfRace_OnClick"
+                    Content="Elf">
+            </Button>
+            
+            <TextBlock Grid.Column="2"
+                       Name="InfosDwarvenRace"/>
+            <Button Grid.Column="2"
+                    Name="_DwarvenRace"
+                    Click="DwarvenRace_OnClick"
+                    Content="Dwarf">
+            </Button>
+            
+            <TextBlock Grid.Column="3"
+                       Name="InfosDragonbornRace"/>
+            <Button Grid.Column="3"
+                    Name="_Dragonborn"
+                    Click="Dragonborn_OnClick"
+                    Content="Dragonborn">
+            </Button>
+            
+            <TextBlock Grid.Column="4"
+                       Name="InfosTieflingRace"/>
+            <Button Grid.Column="4"
+                    Name="_TieflingRace"
+                    Click="TieflingRace_OnClick"
+                    Content="Tiefling">
+            </Button>
+            
+        </Grid>
+    </Grid>
+</UserControl>

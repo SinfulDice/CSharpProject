@@ -1,0 +1,146 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="MyCSharpGame.Windows.CharacterSheetWindow"
+             Width="700"
+             Height="900">
+    <Grid Width="700" Height="900">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="800"/>
+        </Grid.RowDefinitions>
+        
+        <Border Grid.Row="0" Background="DarkRed"/>
+        <Grid Grid.Row="0"
+              ColumnDefinitions="*, *">
+            <Button Grid.Column="0" Name="SaveQuitButton"
+                    Click="SaveQuitButton_OnClick"
+                    HorizontalAlignment="Center">
+                SaveQuitButton
+            </Button>
+            <Button Grid.Column="1" Name="SettingButton"
+                    Click="SettingButton_OnClick"
+                    HorizontalAlignment="Center">
+                SettingButton
+            </Button>
+        </Grid>
+        
+        <Grid Grid.Row="1"
+                  Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="280"/>
+                    <ColumnDefinition Width="400"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="280"/>
+                    <RowDefinition Height="500"/>
+                </Grid.RowDefinitions>
+                
+                <Border Grid.Column="0" Grid.Row="0" Background="Blue"/>
+                <Border Grid.Column="0" Grid.Row="1" Background="Green"/>
+                <Border Grid.Column="1" Grid.Row="1" Background="Red"/>
+                
+                <Image Grid.Column="0" Grid.Row="0" Source="avares://MyCSharpGame/assets/Default.png" Width="280" Height="280"/>
+                
+                <Grid Grid.Column="1" 
+                      Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="250"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" Background="DeepSkyBlue"/>
+                    <Border Grid.Row="1" Background="DodgerBlue"/>
+                    <Grid Grid.Row="0"
+                          ColumnDefinitions="*, *">
+                        <TextBlock Grid.Column="0" Margin="5" 
+                                   HorizontalAlignment="Center"
+                                   Name="Name"
+                                   Text="Name : ">
+                        </TextBlock>
+                        <TextBlock Grid.Column="1" Margin="5" 
+                                   HorizontalAlignment="Center">
+                            Lvl1 - 0xp
+                        </TextBlock>
+                    </Grid>
+                    
+                    <Grid Grid.Row="1"
+                          Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="190"/>
+                            <ColumnDefinition Width="190"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Background="Violet"/>
+                        <Border Grid.Column="1" Background="Pink"/>
+                        
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="110"/>
+                            </Grid.RowDefinitions>
+                            
+                            <TextBlock Grid.Row="0"
+                                       Name="Height"
+                                       Text="Height : "/>
+                            <TextBlock Grid.Row="1"
+                                       Name="Weight"
+                                       Text="Weight : "/>
+                            <TextBlock Grid.Row="2"
+                                       Name="Age"
+                                       Text="Age : "/>
+                            <TextBlock Grid.Row="3"
+                                       Name="Race"
+                                       Text="Race : "/>
+                            <TextBlock Grid.Row="4"
+                                       Name="Class"
+                                       Text="Class : "/>
+                            <TextBlock Grid.Row="5"
+                                       Name="Speed"
+                                       Text="Speed : "/>
+                            <TextBlock Grid.Row="6">Max Hit Point</TextBlock>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                
+                <ScrollViewer Grid.Column="0"
+                              Grid.Row="1" 
+                              Margin="10">
+                    Items
+                </ScrollViewer>
+                
+                <Grid Grid.Column="1"
+                      Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="250"/>
+                        <RowDefinition Height="250"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Border Grid.Row="0" Background="Lime"/>
+                    <Border Grid.Row="1" Background="YellowGreen"/>
+                    
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="200"/>
+                        </Grid.ColumnDefinitions>
+                        <ScrollViewer Grid.Column="0">
+                            Battle Stuff
+                        </ScrollViewer>
+                        <ScrollViewer Grid.Column="1">
+                            Other Stuff
+                        </ScrollViewer>
+                    </Grid>
+                    
+                    <ScrollViewer Grid.Row="1">
+                        Competences
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+    </Grid>
+</UserControl>
