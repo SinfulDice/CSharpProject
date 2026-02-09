@@ -105,6 +105,35 @@
                                        Text="Speed : "/>
                             <TextBlock Grid.Row="6">Max Hit Point</TextBlock>
                         </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                            </Grid.RowDefinitions>
+                            
+                            <TextBlock Grid.Row="0"
+                                       Name="STRTextBlock"
+                                       Text="Strength : "/>
+                            <TextBlock Grid.Row="1"
+                                       Name="DEXTextBlock"
+                                       Text="Dexterity : "/>
+                            <TextBlock Grid.Row="2"
+                                       Name="CONTextBlock"
+                                       Text="Constitution : "/>
+                            <TextBlock Grid.Row="3"
+                                       Name="INTTextBlock"
+                                       Text="Intelligence : "/>
+                            <TextBlock Grid.Row="4"
+                                       Name="WISTextBlock"
+                                       Text="Wisdom : "/>
+                            <TextBlock Grid.Row="5"
+                                       Name="CHATextBlock"
+                                       Text="Charisma : "/>
+                        </Grid>
                     </Grid>
                 </Grid>
                 

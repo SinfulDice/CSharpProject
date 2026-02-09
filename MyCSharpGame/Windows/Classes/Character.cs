@@ -14,6 +14,8 @@ public class Character
 
     public int money;
 
+    public int[] caracteristics;
+    
     public CharacterClass characterClass;
     public CharacterRace characterRace;
 

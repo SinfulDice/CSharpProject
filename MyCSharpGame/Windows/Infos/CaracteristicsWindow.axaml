@@ -9,7 +9,6 @@
             <Setter Property="Margin" Value="25"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="TextAlignment" Value="Center"/>
-            <Setter Property="Text" Value=""/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
@@ -18,7 +17,7 @@
             <Setter Property="Minimum" Value="1"/>
             <Setter Property="Maximum" Value="15"/>
             <Setter Property="Increment" Value="1"/>
-            <Setter Property="Value" Value="10"/>
+            <Setter Property="Value" Value="0"/>
             <Setter Property="Margin" Value="15"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -38,6 +37,7 @@
                 Name="NextButton"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom"
+                Click="NextButton_OnClick"
                 Content="Next"/>
         
         <Grid Grid.Row="1">
@@ -61,8 +61,7 @@
                        Name="InfoSTRTextBlock"/>
             <NumericUpDown Grid.Column="1" Grid.Row="0"
                            Name="STRUpDown"
-                           ValueChanged="STRUpDown_OnValueChanged"
-                           Width="120"/>
+                           ValueChanged="HandleStatChange"/>
             <TextBlock Grid.Column="2" Grid.Row="0"
                        Name="BonusSTRTextBlock"/>
             <TextBlock Grid.Column="3" Grid.Row="0"
@@ -72,8 +71,7 @@
                        Name="InfoDEXTextBlock"/>
             <NumericUpDown Grid.Column="1" Grid.Row="1"
                            Name="DEXUpDown"
-                           ValueChanged="DEXUpDown_OnValueChanged"
-                           Width="120"/>
+                           ValueChanged="HandleStatChange"/>
             <TextBlock Grid.Column="2" Grid.Row="1"
                        Name="BonusDEXTextBlock"/>
             <TextBlock Grid.Column="3" Grid.Row="1"
@@ -83,8 +81,7 @@
                        Name="InfoCONTextBlock"/>
             <NumericUpDown Grid.Column="1" Grid.Row="2"
                            Name="CONUpDown"
-                           ValueChanged="CONUpDown_OnValueChanged"
-                           Width="120"/>
+                           ValueChanged="HandleStatChange"/>
             <TextBlock Grid.Column="2" Grid.Row="2"
                        Name="BonusCONTextBlock"/>
             <TextBlock Grid.Column="3" Grid.Row="2"
@@ -94,8 +91,7 @@
                        Name="InfoINTTextBlock"/>
             <NumericUpDown Grid.Column="1" Grid.Row="3"
                            Name="INTUpDown"
-                           ValueChanged="INTUpDown_OnValueChanged"
-                           Width="120"/>
+                           ValueChanged="HandleStatChange"/>
             <TextBlock Grid.Column="2" Grid.Row="3"
                        Name="BonusINTTextBlock"/>
             <TextBlock Grid.Column="3" Grid.Row="3"
@@ -105,8 +101,7 @@
                        Name="InfoWISTextBlock"/>
             <NumericUpDown Grid.Column="1" Grid.Row="4"
                            Name="WISUpDown"
-                           ValueChanged="WISUpDown_OnValueChanged"
-                           Width="120"/>
+                           ValueChanged="HandleStatChange"/>
             <TextBlock Grid.Column="2" Grid.Row="4"
                        Name="BonusWISTextBlock"/>
             <TextBlock Grid.Column="3" Grid.Row="4"
@@ -116,8 +111,7 @@
                        Name="InfoCHATextBlock"/>
             <NumericUpDown Grid.Column="1" Grid.Row="5"
                            Name="CHAUpDown"
-                           ValueChanged="CHAUpDown_OnValueChanged"
-                           Width="120"/>
+                           ValueChanged="HandleStatChange"/>
             <TextBlock Grid.Column="2" Grid.Row="5"
                        Name="BonusCHATextBlock"/>
             <TextBlock Grid.Column="3" Grid.Row="5"

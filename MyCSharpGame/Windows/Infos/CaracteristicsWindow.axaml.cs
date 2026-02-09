@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Tmds.DBus.Protocol;
 
@@ -9,15 +11,18 @@ namespace MyCSharpGame.Windows.Infos;
 public partial class CaracteristicsWindow : UserControl
 {
     public int total = 0;
-
+    public bool _isUpdating = false;
+    private readonly PlayWindow _playWindow;
+    public int[] _caracteristics;
+    
     public Dictionary<string, int> stats = new()
     {
-        {"Strength", 10},
-        {"Dexterity", 10},
-        {"Constitution", 10},
-        {"Intelligence", 10},
-        {"Wisdow", 10},
-        {"Charisma", 10}
+        {"STR", 8},
+        {"DEX", 8},
+        {"CON", 8},
+        {"INT", 8},
+        {"WIS", 8},
+        {"CHA", 8}
     };
 
     public Dictionary<int, int> valueCost = new()
@@ -40,94 +45,104 @@ public partial class CaracteristicsWindow : UserControl
         
     };
     
-    public CaracteristicsWindow()
+    public CaracteristicsWindow(PlayWindow playWindow)
     {
         InitializeComponent();
-        totalCaracteristicsCounter();
+        _playWindow = playWindow;
+
+        InfoSTRTextBlock.Text = "test";
+        BonusSTRTextBlock.Text = "test";
+        STRTextBlock.Text = "test";
         
+        InfoDEXTextBlock.Text = "test";
+        BonusDEXTextBlock.Text = "test";
+        DEXTextBlock.Text = "test";
+        
+        InfoCONTextBlock.Text = "test";
+        BonusCONTextBlock.Text = "test";
+        CONTextBlock.Text = "test";
+        
+        InfoINTTextBlock.Text = "test";
+        BonusINTTextBlock.Text = "test";
+        INTTextBlock.Text = "test";
+        
+        InfoWISTextBlock.Text = "test";
+        BonusWISTextBlock.Text = "test";
+        WISTextBlock.Text = "test";
+        
+        InfoCHATextBlock.Text = "test";
+        BonusCHATextBlock.Text = "test";
+        CHATextBlock.Text = "test";
+
+        STRUpDown.Value = stats["STR"];
+        DEXUpDown.Value = stats["DEX"];
+        CONUpDown.Value = stats["CON"];
+        INTUpDown.Value = stats["INT"];
+        WISUpDown.Value = stats["WIS"];
+        CHAUpDown.Value = stats["CHA"];
     }
 
-    public void totalCaracteristicsCounter()
-    {
-        int _str = stats["Strength"];
-        int _dex = stats["Dexterity"];
-        int _con = stats["Constitution"];
-        int _int = stats["Intelligence"];
-        int _wis = stats["Wisdom"];
-        int _cha = stats["Charisma"];
+    // public void totalCaracteristicsCounter()
+    // {
+    //     int _str = valueCost[stats["STR"]];
+    //     int _dex = valueCost[stats["DEX"]];
+    //     int _con = valueCost[stats["CON"]];
+    //     int _int = valueCost[stats["INT"]];
+    //     int _wis = valueCost[stats["WIS"]];
+    //     int _cha = valueCost[stats["CHA"]];
+    //
+    //     total = _str + _dex + _con + _int + _wis + _cha;
+    // }
 
-        total = _str + _dex + _con + _int + _wis + _cha;
-    }
-
-    private void STRUpDown_OnValueChanged(object? sender, NumericUpDownValueChangedEventArgs e)
+    public int CalculateTotalWithChange(string statName, int newValue)
     {
-        totalCaracteristicsCounter();
-        if (total > 27)
+        int potentialTotal = 0;
+        foreach (var stat in stats)
         {
-            STRUpDown.Value -= 1;
-            return;
+            int valueToCount = (stat.Key == statName) ? newValue : stat.Value;
+            potentialTotal += valueCost[valueToCount];
         }
+        return potentialTotal;
+    }
+    
+    private void HandleStatChange(object? sender, NumericUpDownValueChangedEventArgs e)
+    {
+        if (_isUpdating || sender is not NumericUpDown control) return;
+        
+        string statName = control.Name.Replace("UpDown", ""); 
+    
+        int newValue = (int)(control.Value ?? 8);
 
-        stats["Strength"] = (int)(STRUpDown.Value ?? 0);
+        if (CalculateTotalWithChange(statName, newValue) > 27)
+        {
+            _isUpdating = true;
+            control.Value = e.OldValue;
+            _isUpdating = false;
+        }
+        else
+        {
+            stats[statName] = newValue;
+        }
+    }
+    
+    public void NextWindow(Dictionary<string, int> _Caracteristics)
+    {
+        var characterSheet = _playWindow.CharacterSheetWindow;
+        characterSheet.ChangeCaracteristics(_Caracteristics);
+        _playWindow.ShowCaracteristicsWindow();
+
+        int i = 0;
+        
+        foreach (var stat in stats)
+        {
+            _caracteristics[i] = stat.Value;
+            i++;
+        }
     }
 
-    private void DEXUpDown_OnValueChanged(object? sender, NumericUpDownValueChangedEventArgs e)
+    private void NextButton_OnClick(object? sender, RoutedEventArgs e)
     {
-        totalCaracteristicsCounter();
-        if (total > 27)
-        {
-            DEXUpDown.Value -= 1;
-            return;
-        }
-
-        stats["Dexterity"] = (int)(DEXUpDown.Value ?? 0);
-    }
-
-    private void CONUpDown_OnValueChanged(object? sender, NumericUpDownValueChangedEventArgs e)
-    {
-        totalCaracteristicsCounter();
-        if (total > 27)
-        {
-            CONUpDown.Value -= 1;
-            return;
-        }
-
-        stats["Constitution"] = (int)(CONUpDown.Value ?? 0);
-    }
-
-    private void INTUpDown_OnValueChanged(object? sender, NumericUpDownValueChangedEventArgs e)
-    {
-        totalCaracteristicsCounter();
-        if (total > 27)
-        {
-            INTUpDown.Value -= 1;
-            return;
-        }
-
-        stats["Intelligence"] = (int)(INTUpDown.Value ?? 0);
-    }
-
-    private void WISUpDown_OnValueChanged(object? sender, NumericUpDownValueChangedEventArgs e)
-    {
-        totalCaracteristicsCounter();
-        if (total > 27)
-        {
-            WISUpDown.Value -= 1;
-            return;
-        }
-
-        stats["Wisdom"] = (int)(WISUpDown.Value ?? 0);
-    }
-
-    private void CHAUpDown_OnValueChanged(object? sender, NumericUpDownValueChangedEventArgs e)
-    {
-        totalCaracteristicsCounter();
-        if (total > 27)
-        {
-            CHAUpDown.Value -= 1;
-            return;
-        }
-
-        stats["Charisma"] = (int)(CHAUpDown.Value ?? 0);
+        NextWindow(stats);
+        MainWindow.Player.caracteristics = _caracteristics;
     }
 }

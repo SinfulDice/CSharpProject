@@ -10,7 +10,6 @@
             <Setter Property="Margin" Value="25"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="TextAlignment" Value="Center"/>
-            <Setter Property="Text" Value=""/>
         </Style>
         
         <Style Selector="NumericUpDown">

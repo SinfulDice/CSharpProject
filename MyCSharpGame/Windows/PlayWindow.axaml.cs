@@ -43,7 +43,7 @@ public partial class PlayWindow : UserControl
 
     public void ShowCaracteristicsWindow()
     {
-        CaracteristicsWindow = new CaracteristicsWindow();
+        CaracteristicsWindow = new CaracteristicsWindow(this);
         PlayPanel.Children.Clear();
         PlayPanel.Children.Add(CaracteristicsWindow);
     }

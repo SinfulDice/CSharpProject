@@ -71,3 +71,4 @@ C:\Users\pierr\RiderProjects\MyCSharpGame\MyCSharpGame\obj\Debug\net9.0\refint\M
 C:\Users\pierr\RiderProjects\MyCSharpGame\MyCSharpGame\obj\Debug\net9.0\MyCSharpGame.pdb
 C:\Users\pierr\RiderProjects\MyCSharpGame\MyCSharpGame\obj\Debug\net9.0\MyCSharpGame.genruntimeconfig.cache
 C:\Users\pierr\RiderProjects\MyCSharpGame\MyCSharpGame\obj\Debug\net9.0\ref\MyCSharpGame.dll
+C:\Users\pierr\RiderProjects\MyCSharpGame\MyCSharpGame\obj\Debug\net9.0\MyCSharpGame.sourcelink.json
