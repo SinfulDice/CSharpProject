@@ -103,7 +103,10 @@
                             <TextBlock Grid.Row="5"
                                        Name="Speed"
                                        Text="Speed : "/>
-                            <TextBlock Grid.Row="6">Max Hit Point</TextBlock>
+                            <TextBlock Grid.Row="6"
+                                       Name="MaxHitPoint"
+                                       TextWrapping="Wrap"
+                                       Text="Max Hit Point :"/>
                         </Grid>
                         <Grid Grid.Column="1">
                             <Grid.RowDefinitions>
@@ -166,9 +169,11 @@
                         </ScrollViewer>
                     </Grid>
                     
-                    <ScrollViewer Grid.Row="1">
-                        Competences
-                    </ScrollViewer>
+                    <TextBlock Grid.Row="1"
+                                  Name="Skills"
+                                  TextWrapping="Wrap">
+                        Skills
+                    </TextBlock>
                 </Grid>
             </Grid>
     </Grid>

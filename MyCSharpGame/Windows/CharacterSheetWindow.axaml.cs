@@ -71,4 +71,14 @@ public partial class CharacterSheetWindow : UserControl
             textBlockName[stat.Key].Text = $"{stat.Key} : {stat.Value}";
         }
     }
+
+    public void ChangeSkills(string skill, string infos)
+    {
+        Skills.Text = $"Skills : \n\n{skill} : \n\n{infos}";
+    }
+    
+    public void ChangeMaxHitPoint(string input)
+    {
+    MaxHitPoint.Text = $"Max Hit Points : {input} \nAt this level you have 1d{input} for healing";
+    }
 }

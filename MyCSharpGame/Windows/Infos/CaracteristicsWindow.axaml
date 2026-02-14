@@ -31,8 +31,20 @@
         </Grid.RowDefinitions>
         
         <TextBlock Grid.Row="0"
+                   Name="TextBlock"
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Bottom"/>
+                   VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="0"
+                   Name="TotalPoints"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Bottom"
+                   Text="Total Points : "/>
+        <Button Grid.Row="0"
+                Name="RandomButton"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Click="RandomButton_OnClick"
+                Content="Random stat generation"/>
         <Button Grid.Row="0"
                 Name="NextButton"
                 HorizontalAlignment="Right"

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -10,7 +11,7 @@ namespace MyCSharpGame.Windows.Infos;
 
 public partial class CaracteristicsWindow : UserControl
 {
-    public int total = 0;
+    public static Random RNG = new Random();
     public bool _isUpdating = false;
     private readonly PlayWindow _playWindow;
     public int[] _caracteristics;
@@ -50,29 +51,37 @@ public partial class CaracteristicsWindow : UserControl
         InitializeComponent();
         _playWindow = playWindow;
 
-        InfoSTRTextBlock.Text = "test";
-        BonusSTRTextBlock.Text = "test";
-        STRTextBlock.Text = "test";
+        TextBlock.Text = "You may choose your character statistics here, but if you prefer, you can choose to gamble them, and roll with it. It is your choice." +
+                         " If you want to choose them manually, there is a cost for all of those statistics. A stat of 8 or less will cost you 0, a stat of 9 will" +
+                         " cost you 1, a stat of 10 will cost you 2, a stat of 11 will cost you 3, a stat of 12 will cost you 4, a stat of 13 will cost you 5," +
+                         " a stat of 14 will cost you 7 and finally, a stat of 15 will cost you 9. You can't go beyond 15, it is against the rules, except with your" +
+                         " racial bonus(es) of course.";
         
-        InfoDEXTextBlock.Text = "test";
-        BonusDEXTextBlock.Text = "test";
-        DEXTextBlock.Text = "test";
+        _caracteristics = new int[6];
+
+        InfoSTRTextBlock.Text = "Strength";
+        BonusSTRTextBlock.Text = $"{MainWindow.Player.characterRace.caracUp[0]}";
+        STRTextBlock.Text = $"{stats["STR"] + MainWindow.Player.characterRace.caracUp[0]}";
         
-        InfoCONTextBlock.Text = "test";
-        BonusCONTextBlock.Text = "test";
-        CONTextBlock.Text = "test";
+        InfoDEXTextBlock.Text = "Dexterity";
+        BonusDEXTextBlock.Text = $"{MainWindow.Player.characterRace.caracUp[1]}";
+        DEXTextBlock.Text = $"{stats["DEX"] + MainWindow.Player.characterRace.caracUp[1]}";
         
-        InfoINTTextBlock.Text = "test";
-        BonusINTTextBlock.Text = "test";
-        INTTextBlock.Text = "test";
+        InfoCONTextBlock.Text = "Constitution";
+        BonusCONTextBlock.Text = $"{MainWindow.Player.characterRace.caracUp[2]}";
+        CONTextBlock.Text = $"{stats["CON"] + MainWindow.Player.characterRace.caracUp[2]}";
         
-        InfoWISTextBlock.Text = "test";
-        BonusWISTextBlock.Text = "test";
-        WISTextBlock.Text = "test";
+        InfoINTTextBlock.Text = "Intelligence";
+        BonusINTTextBlock.Text = $"{MainWindow.Player.characterRace.caracUp[3]}";
+        INTTextBlock.Text = $"{stats["INT"] + MainWindow.Player.characterRace.caracUp[3]}";
         
-        InfoCHATextBlock.Text = "test";
-        BonusCHATextBlock.Text = "test";
-        CHATextBlock.Text = "test";
+        InfoWISTextBlock.Text = "Wisdom";
+        BonusWISTextBlock.Text = $"{MainWindow.Player.characterRace.caracUp[4]}";
+        WISTextBlock.Text = $"{stats["WIS"] + MainWindow.Player.characterRace.caracUp[4]}";
+        
+        InfoCHATextBlock.Text = "Charisma";
+        BonusCHATextBlock.Text = $"{MainWindow.Player.characterRace.caracUp[5]}";
+        CHATextBlock.Text = $"{stats["CHA"] + MainWindow.Player.characterRace.caracUp[5]}";
 
         STRUpDown.Value = stats["STR"];
         DEXUpDown.Value = stats["DEX"];
@@ -109,7 +118,7 @@ public partial class CaracteristicsWindow : UserControl
     {
         if (_isUpdating || sender is not NumericUpDown control) return;
         
-        string statName = control.Name.Replace("UpDown", ""); 
+        string statName = control.Name.Replace("UpDown", "");
     
         int newValue = (int)(control.Value ?? 8);
 
@@ -122,6 +131,7 @@ public partial class CaracteristicsWindow : UserControl
         else
         {
             stats[statName] = newValue;
+            RefreshUI();
         }
     }
     
@@ -144,5 +154,49 @@ public partial class CaracteristicsWindow : UserControl
     {
         NextWindow(stats);
         MainWindow.Player.caracteristics = _caracteristics;
+    }
+
+    private void RandomButton_OnClick(object? sender, RoutedEventArgs e)
+    {
+        _isUpdating = true;
+        
+        string[] keys = { "STR", "DEX", "CON", "INT", "WIS", "CHA" };
+        NumericUpDown[] ups = { STRUpDown, DEXUpDown, CONUpDown, INTUpDown, WISUpDown, CHAUpDown };
+
+        for (int i = 0; i < keys.Length; i++)
+        {
+            int randomScore = RNG.Next(8, 16);
+            stats[keys[i]] = randomScore;
+            ups[i].Value = randomScore;
+        }
+        
+        RefreshUI();
+        _isUpdating = false;
+    }
+    
+    private void RefreshUI()
+    {
+        string[] keys = { "STR", "DEX", "CON", "INT", "WIS", "CHA" };
+        TextBlock[] texts = { STRTextBlock, DEXTextBlock, CONTextBlock, INTTextBlock, WISTextBlock, CHATextBlock };
+        int pointsUsed = GetCurrentTotalCost();
+
+        for (int i = 0; i < keys.Length; i++)
+        {
+            int baseStat = stats[keys[i]];
+            int bonus = MainWindow.Player.characterRace.caracUp[i];
+            texts[i].Text = (baseStat + bonus).ToString();
+        }
+
+        TotalPoints.Text = $"Points spent : {pointsUsed} / 27";
+    }
+    
+    public int GetCurrentTotalCost()
+    {
+        int currentTotal = 0;
+        foreach (var stat in stats)
+        {
+            currentTotal += valueCost[stat.Value];
+        }
+        return currentTotal;
     }
 }
