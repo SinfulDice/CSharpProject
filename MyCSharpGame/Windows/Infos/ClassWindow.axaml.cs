@@ -39,6 +39,7 @@ public partial class ClassWindow : UserControl
         characterSheet.ChangeClass(_class);
         characterSheet.ChangeSkills(_skill, _infos);
         characterSheet.ChangeMaxHitPoint(_hitDice);
+        characterSheet.ChangeCombatItem(MainWindow.Player.CombatInventory);
         _playWindow.ShowHeightWeightAgeWindow();
     }
     private void BarbarianClass_OnClick(object? sender, RoutedEventArgs e)
@@ -47,6 +48,13 @@ public partial class ClassWindow : UserControl
         string _skill = barbarianClass.skillN1;
         string _infos = barbarianClass.infosSkillN1;
         string _hitDice = barbarianClass.hitDice.Replace("1d", "");
+        
+        Item Loincloth = new Item("Your loincloth", EItemRarity.Common);
+        MainWindow.Player.AddToCombatInventory(Loincloth);
+        
+        Item BigRustedSword = new Item("A big rusted sword", EItemRarity.Common);
+        MainWindow.Player.AddToCombatInventory(BigRustedSword);
+        
         NextWindow(_class, _skill, _infos, _hitDice);
     }
     
@@ -56,6 +64,13 @@ public partial class ClassWindow : UserControl
         string _skill = bardClass.skillN1;
         string _infos = bardClass.infosSkillN1;
         string _hitDice = bardClass.hitDice.Replace("1d", "");
+        
+        Item Cloths = new Item("Some cloths", EItemRarity.Common);
+        MainWindow.Player.AddToCombatInventory(Cloths);
+        
+        Item Luth = new Item("A luth", EItemRarity.Common);
+        MainWindow.Player.AddToCombatInventory(Luth);
+        
         NextWindow(_class, _skill, _infos, _hitDice);
     }
 
@@ -65,6 +80,13 @@ public partial class ClassWindow : UserControl
         string _skill = clericClass.skillN1;
         string _infos = clericClass.infosSkillN1;
         string _hitDice = clericClass.hitDice.Replace("1d", "");
+        
+        Item ClericCloths = new Item("Some cleric cloths", EItemRarity.Common);
+        MainWindow.Player.AddToCombatInventory(ClericCloths);
+        
+        Item Bible = new Item("The Bible", EItemRarity.Common);
+        MainWindow.Player.AddToCombatInventory(Bible);
+        
         NextWindow(_class, _skill, _infos, _hitDice);
     }
 
@@ -74,6 +96,13 @@ public partial class ClassWindow : UserControl
         string _skill = druidClass.skillN1;
         string _infos = druidClass.infosSkillN1;
         string _hitDice = druidClass.hitDice.Replace("1d", "");
+        
+        Item Cloths = new Item("Some old cloths", EItemRarity.Common);
+        MainWindow.Player.AddToCombatInventory(Cloths);
+        
+        Item Staff = new Item("A wooden staff", EItemRarity.Common);
+        MainWindow.Player.AddToCombatInventory(Staff);
+        
         NextWindow(_class, _skill, _infos, _hitDice);
     }
 
@@ -83,6 +112,13 @@ public partial class ClassWindow : UserControl
         string _skill = fighterClass.skillN1;
         string _infos = fighterClass.infosSkillN1;
         string _hitDice = fighterClass.hitDice.Replace("1d", "");
+        
+        Item IronSword = new Item("An iron sword", EItemRarity.Common);
+        MainWindow.Player.AddToCombatInventory(IronSword);
+        
+        Item IronArmor = new Item("An iron armor", EItemRarity.Common);
+        MainWindow.Player.AddToCombatInventory(IronArmor);
+        
         NextWindow(_class, _skill, _infos, _hitDice);
     }
 
@@ -92,6 +128,10 @@ public partial class ClassWindow : UserControl
         string _skill = monkClass.skillN1;
         string _infos = monkClass.infosSkillN1;
         string _hitDice = monkClass.hitDice.Replace("1d", "");
+        
+        Item Loincloth = new Item("Your loincloth", EItemRarity.Common);
+        MainWindow.Player.AddToCombatInventory(Loincloth);
+        
         NextWindow(_class, _skill, _infos, _hitDice);
     }
 
@@ -101,6 +141,13 @@ public partial class ClassWindow : UserControl
         string _skill = rogueClass.skillN1;
         string _infos = rogueClass.infosSkillN1;
         string _hitDice = rogueClass.hitDice.Replace("1d", "");
+        
+        Item Cloths = new Item("Some cloths", EItemRarity.Common);
+        MainWindow.Player.AddToCombatInventory(Cloths);
+        
+        Item Dagger = new Item("A dagger", EItemRarity.Common);
+        MainWindow.Player.AddToCombatInventory(Dagger);
+        
         NextWindow(_class, _skill, _infos, _hitDice);
     }
 
@@ -110,6 +157,10 @@ public partial class ClassWindow : UserControl
         string _skill = wizardClass.skillN1;
         string _infos = wizardClass.infosSkillN1;
         string _hitDice = wizardClass.hitDice.Replace("1d", "");
+        
+        Item WizardCloths = new Item("Some wizard cloths", EItemRarity.Common);
+        MainWindow.Player.AddToCombatInventory(WizardCloths);
+        
         NextWindow(_class, _skill, _infos, _hitDice);
     }
 
@@ -119,6 +170,13 @@ public partial class ClassWindow : UserControl
         string _skill = artificerClass.skillN1;
         string _infos = artificerClass.infosSkillN1;
         string _hitDice = artificerClass.hitDice.Replace("1d", "");
+        
+        Item Cloths = new Item("Some cloths", EItemRarity.Common);
+        MainWindow.Player.AddToCombatInventory(Cloths);
+        
+        Item Kaboom = new Item("Some kabooms", EItemRarity.Common);
+        MainWindow.Player.AddToCombatInventory(Kaboom);
+        
         NextWindow(_class, _skill, _infos, _hitDice);
     }
 }

@@ -140,11 +140,13 @@
                     </Grid>
                 </Grid>
                 
-                <ScrollViewer Grid.Column="0"
+                <TextBlock Grid.Column="0"
                               Grid.Row="1" 
-                              Margin="10">
+                              Margin="10"
+                              Name="Inventory"
+                              TextWrapping="Wrap">
                     Items
-                </ScrollViewer>
+                </TextBlock>
                 
                 <Grid Grid.Column="1"
                       Grid.Row="1">
@@ -161,12 +163,16 @@
                             <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="200"/>
                         </Grid.ColumnDefinitions>
-                        <ScrollViewer Grid.Column="0">
-                            Battle Stuff
-                        </ScrollViewer>
-                        <ScrollViewer Grid.Column="1">
-                            Other Stuff
-                        </ScrollViewer>
+                        <TextBlock Grid.Column="0"
+                                   Name="CombatInventory"
+                                   TextWrapping="Wrap">
+                            Combat Inventory
+                        </TextBlock>
+                        <TextBlock Grid.Column="1"
+                                   Name="QuestInventory"
+                                   TextWrapping="Wrap">
+                            Quest Inventory
+                        </TextBlock>
                     </Grid>
                     
                     <TextBlock Grid.Row="1"

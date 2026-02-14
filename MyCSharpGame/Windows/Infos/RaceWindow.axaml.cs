@@ -36,6 +36,7 @@ public partial class RaceWindow : UserControl
         var characterSheet = _playWindow.CharacterSheetWindow;
         characterSheet.ChangeRace(_Race);
         characterSheet.ChangeSpeed(_Speed);
+        characterSheet.ChangeQuestItem(MainWindow.Player.QuestInventory);
         _playWindow.ShowClassWindow();
     }
 
@@ -44,6 +45,8 @@ public partial class RaceWindow : UserControl
         string _race = humanRace.label;
         MainWindow.Player.characterRace = humanRace;
         float _speed = MainWindow.Player.toMeters(humanRace.speed);
+        Item TheOneRing = new Item("The One Ring", EItemRarity.Legendary);
+        MainWindow.Player.AddToQuestInventory(TheOneRing);
         NextWindow(_race, _speed);
     }
 
@@ -52,6 +55,8 @@ public partial class RaceWindow : UserControl
         string _race = elfRace.label;
         MainWindow.Player.characterRace = elfRace;
         float _speed = MainWindow.Player.toMeters(elfRace.speed);
+        Item TheOneRing = new Item("The One Ring", EItemRarity.Legendary);
+        MainWindow.Player.AddToQuestInventory(TheOneRing);
         NextWindow(_race, _speed);
     }
 
@@ -60,6 +65,8 @@ public partial class RaceWindow : UserControl
         string _race = dwarvenRace.label;
         MainWindow.Player.characterRace = dwarvenRace;
         float _speed = MainWindow.Player.toMeters(dwarvenRace.speed);
+        Item TheOneRing = new Item("The One Ring", EItemRarity.Legendary);
+        MainWindow.Player.AddToQuestInventory(TheOneRing);
         NextWindow(_race, _speed);
     }
 
@@ -68,6 +75,8 @@ public partial class RaceWindow : UserControl
         string _race = dragonbornRace.label;
         MainWindow.Player.characterRace = dragonbornRace;
         float _speed = MainWindow.Player.toMeters(dragonbornRace.speed);
+        Item TheOneRing = new Item("The One Ring", EItemRarity.Legendary);
+        MainWindow.Player.AddToQuestInventory(TheOneRing);
         NextWindow(_race, _speed);
     }
 
@@ -76,6 +85,8 @@ public partial class RaceWindow : UserControl
         string _race = tieflingRace.label;
         MainWindow.Player.characterRace = tieflingRace;
         float _speed = MainWindow.Player.toMeters(tieflingRace.speed);
+        Item TheOneRing = new Item("The One Ring", EItemRarity.Legendary);
+        MainWindow.Player.AddToQuestInventory(TheOneRing);
         NextWindow(_race, _speed);
     }
 }

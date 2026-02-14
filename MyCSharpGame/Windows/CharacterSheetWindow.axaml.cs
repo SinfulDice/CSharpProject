@@ -3,6 +3,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using MyCSharpGame.Windows.Character;
 
 namespace MyCSharpGame.Windows;
 
@@ -80,5 +81,36 @@ public partial class CharacterSheetWindow : UserControl
     public void ChangeMaxHitPoint(string input)
     {
     MaxHitPoint.Text = $"Max Hit Points : {input} \nAt this level you have 1d{input} for healing";
+    }
+
+    public void ChangeItem(List<Item> items)
+    {
+        Inventory.Text = "Items : \n\n";
+        foreach (var item in items)
+        {
+            if (item == null) continue;
+            
+            Inventory.Text += $"[{item.rarity}] {item.label}\n";
+        }
+    }
+    public void ChangeCombatItem(List<Item> items)
+    {
+        CombatInventory.Text = "Combat Items : \n\n";
+        foreach (var item in items)
+        {
+            if (item == null) continue;
+            
+            CombatInventory.Text += $"[{item.rarity}] {item.label}\n";
+        }
+    }
+    public void ChangeQuestItem(List<Item> items)
+    {
+        QuestInventory.Text = "Quest Items : \n\n";
+        foreach (var item in items)
+        {
+            if (item == null) continue;
+            
+            QuestInventory.Text += $"[{item.rarity}] {item.label}\n";
+        }
     }
 }
