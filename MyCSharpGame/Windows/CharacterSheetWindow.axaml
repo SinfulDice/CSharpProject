@@ -1,186 +1,123 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="MyCSharpGame.Windows.CharacterSheetWindow"
-             Width="700"
-             Height="900">
-    <Grid Width="700" Height="900">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="800"/>
-        </Grid.RowDefinitions>
+             Background="#1e1e1e"
+             Foreground="#e0e0e0">
+    
+    <UserControl.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="SemiBold"/>
+        </Style>
+        <Style Selector="Border.Card">
+            <Setter Property="Background" Value="#2d2d2d"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="BorderBrush" Value="#444"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="4"/>
+        </Style>
+        <Style Selector="TextBlock.Header">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#FFD700"/> </Style>
+    </UserControl.Styles>
+
+    <Grid RowDefinitions="60, *">
         
-        <Border Grid.Row="0" Background="DarkRed"/>
-        <Grid Grid.Row="0"
-              ColumnDefinitions="*, *">
-            <Button Grid.Column="0" Name="SaveQuitButton"
-                    Click="SaveQuitButton_OnClick"
-                    HorizontalAlignment="Center">
-                SaveQuitButton
-            </Button>
-            <Button Grid.Column="1" Name="SettingButton"
-                    Click="SettingButton_OnClick"
-                    HorizontalAlignment="Center">
-                SettingButton
-            </Button>
-        </Grid>
-        
-        <Grid Grid.Row="1"
-                  Margin="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="280"/>
-                    <ColumnDefinition Width="400"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="280"/>
-                    <RowDefinition Height="500"/>
-                </Grid.RowDefinitions>
-                
-                <Border Grid.Column="0" Grid.Row="0" Background="Blue"/>
-                <Border Grid.Column="0" Grid.Row="1" Background="Green"/>
-                <Border Grid.Column="1" Grid.Row="1" Background="Red"/>
-                
-                <Image Grid.Column="0" Grid.Row="0" Source="avares://MyCSharpGame/assets/Default.png" Width="280" Height="280"/>
-                
-                <Grid Grid.Column="1" 
-                      Grid.Row="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="250"/>
-                    </Grid.RowDefinitions>
-                    <Border Grid.Row="0" Background="DeepSkyBlue"/>
-                    <Border Grid.Row="1" Background="DodgerBlue"/>
-                    <Grid Grid.Row="0"
-                          ColumnDefinitions="*, *">
-                        <TextBlock Grid.Column="0" Margin="5" 
-                                   HorizontalAlignment="Center"
-                                   Name="Name"
-                                   Text="Name : ">
-                        </TextBlock>
-                        <TextBlock Grid.Column="1" Margin="5" 
-                                   HorizontalAlignment="Center">
-                            Lvl1 - 0xp
-                        </TextBlock>
-                    </Grid>
-                    
-                    <Grid Grid.Row="1"
-                          Margin="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="190"/>
-                            <ColumnDefinition Width="190"/>
-                        </Grid.ColumnDefinitions>
-                        <Border Grid.Column="0" Background="Violet"/>
-                        <Border Grid.Column="1" Background="Pink"/>
+        <Border Grid.Row="0" Background="#252525" BorderBrush="#333" BorderThickness="0,0,0,2">
+            <Grid ColumnDefinitions="*, *">
+                <Button Grid.Column="0" Name="SaveQuitButton" Click="SaveQuitButton_OnClick"
+                        Margin="10" Padding="20,5" Background="#4a1515" HotKey="Escape">
+                    <TextBlock Text="Sauvegarder &amp; Quitter" Foreground="White"/>
+                </Button>
+                <Button Grid.Column="1" Name="SettingButton" Click="SettingButton_OnClick"
+                        Margin="10" Padding="20,5" HorizontalAlignment="Right">
+                    <TextBlock Text="Paramètres"/>
+                </Button>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1" Margin="15" ColumnDefinitions="280, *" RowDefinitions="300, *">
+            
+            <Border Grid.Column="0" Grid.Row="0" Classes="Card">
+                <Panel>
+                    <Image Source="avares://MyCSharpGame/assets/Default.png" 
+                           Margin="5" Stretch="UniformToFill" ClipToBounds="True">
                         
-                        <Grid Grid.Column="0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="110"/>
-                            </Grid.RowDefinitions>
-                            
-                            <TextBlock Grid.Row="0"
-                                       Name="Height"
-                                       Text="Height : "/>
-                            <TextBlock Grid.Row="1"
-                                       Name="Weight"
-                                       Text="Weight : "/>
-                            <TextBlock Grid.Row="2"
-                                       Name="Age"
-                                       Text="Age : "/>
-                            <TextBlock Grid.Row="3"
-                                       Name="Race"
-                                       Text="Race : "/>
-                            <TextBlock Grid.Row="4"
-                                       Name="Class"
-                                       Text="Class : "/>
-                            <TextBlock Grid.Row="5"
-                                       Name="Speed"
-                                       Text="Speed : "/>
-                            <TextBlock Grid.Row="6"
-                                       Name="MaxHitPoint"
-                                       TextWrapping="Wrap"
-                                       Text="Max Hit Point :"/>
-                        </Grid>
-                        <Grid Grid.Column="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                            </Grid.RowDefinitions>
-                            
-                            <TextBlock Grid.Row="0"
-                                       Name="STRTextBlock"
-                                       Text="Strength : "/>
-                            <TextBlock Grid.Row="1"
-                                       Name="DEXTextBlock"
-                                       Text="Dexterity : "/>
-                            <TextBlock Grid.Row="2"
-                                       Name="CONTextBlock"
-                                       Text="Constitution : "/>
-                            <TextBlock Grid.Row="3"
-                                       Name="INTTextBlock"
-                                       Text="Intelligence : "/>
-                            <TextBlock Grid.Row="4"
-                                       Name="WISTextBlock"
-                                       Text="Wisdom : "/>
-                            <TextBlock Grid.Row="5"
-                                       Name="CHATextBlock"
-                                       Text="Charisma : "/>
-                        </Grid>
+                    </Image>
+                </Panel>
+            </Border>
+
+            <Grid Grid.Column="1" Grid.Row="0" RowDefinitions="Auto, *">
+                <Border Grid.Row="0" Classes="Card" Background="#3d3d3d" Height="40">
+                    <Grid ColumnDefinitions="*, Auto">
+                        <TextBlock Grid.Column="0" Name="Name" Text="Nom : Inconnu" 
+                                   Margin="15,0" FontSize="16" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="1" Text="Lvl 1 - 0 XP" 
+                                   Margin="15,0" Foreground="#aaa"/>
                     </Grid>
-                </Grid>
-                
-                <TextBlock Grid.Column="0"
-                              Grid.Row="1" 
-                              Margin="10"
-                              Name="Inventory"
-                              TextWrapping="Wrap">
-                    Items
-                </TextBlock>
-                
-                <Grid Grid.Column="1"
-                      Grid.Row="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="250"/>
-                        <RowDefinition Height="250"/>
-                    </Grid.RowDefinitions>
-                    
-                    <Border Grid.Row="0" Background="Lime"/>
-                    <Border Grid.Row="1" Background="YellowGreen"/>
-                    
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="200"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"
-                                   Name="CombatInventory"
-                                   TextWrapping="Wrap">
-                            Combat Inventory
-                        </TextBlock>
-                        <TextBlock Grid.Column="1"
-                                   Name="QuestInventory"
-                                   TextWrapping="Wrap">
-                            Quest Inventory
-                        </TextBlock>
-                    </Grid>
-                    
-                    <TextBlock Grid.Row="1"
-                                  Name="Skills"
-                                  TextWrapping="Wrap">
-                        Skills
-                    </TextBlock>
+                </Border>
+
+                <Grid Grid.Row="1" ColumnDefinitions="*, *">
+                    <Border Grid.Column="0" Classes="Card">
+                        <StackPanel Margin="12" Spacing="8">
+                            <TextBlock Name="Height" Text="Taille : "/>
+                            <TextBlock Name="Weight" Text="Poids : "/>
+                            <TextBlock Name="Age" Text="Âge : "/>
+                            <TextBlock Name="Race" Text="Race : "/>
+                            <TextBlock Name="Class" Text="Classe : "/>
+                            <TextBlock Name="Speed" Text="Vitesse : "/>
+                            <Separator Background="#444"/>
+                            <TextBlock Name="MaxHitPoint" Text="Points de Vie Max :" 
+                                       Foreground="#ff4d4d" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Grid.Column="1" Classes="Card" BorderBrush="#FFD700" BorderThickness="0.5">
+                        <StackPanel Margin="12" Spacing="10">
+                            <TextBlock Classes="Header" Text="ATTRIBUTS" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                            <TextBlock Name="STRTextBlock" Text="Force : "/>
+                            <TextBlock Name="DEXTextBlock" Text="Dextérité : "/>
+                            <TextBlock Name="CONTextBlock" Text="Constitution : "/>
+                            <TextBlock Name="INTTextBlock" Text="Intelligence : "/>
+                            <TextBlock Name="WISTextBlock" Text="Sagesse : "/>
+                            <TextBlock Name="CHATextBlock" Text="Charisme : "/>
+                        </StackPanel>
+                    </Border>
                 </Grid>
             </Grid>
+
+            <Border Grid.Row="1" Grid.Column="0" Classes="Card">
+                <DockPanel Margin="10">
+                    <TextBlock DockPanel.Dock="Top" Text="INVENTAIRE" Classes="Header" Margin="0,0,0,10"/>
+                    <ScrollViewer>
+                        <TextBlock Name="Inventory" Text="Objets..." TextWrapping="Wrap" Foreground="#bbb"/>
+                    </ScrollViewer>
+                </DockPanel>
+            </Border>
+
+            <Grid Grid.Column="1" Grid.Row="1" RowDefinitions="*, *">
+                <Border Grid.Row="0" Classes="Card">
+                    <Grid ColumnDefinitions="*, 1, *">
+                        <StackPanel Grid.Column="0" Margin="10">
+                            <TextBlock Text="COMBAT" Classes="Header" FontSize="12"/>
+                            <TextBlock Name="CombatInventory" Text="Armes..." TextWrapping="Wrap" FontSize="13"/>
+                        </StackPanel>
+                        <Rectangle Grid.Column="1" Fill="#444" Width="1" Margin="0,10"/>
+                        <StackPanel Grid.Column="2" Margin="10">
+                            <TextBlock Text="QUÊTES" Classes="Header" FontSize="12"/>
+                            <TextBlock Name="QuestInventory" Text="Objets de quête..." TextWrapping="Wrap" FontSize="13"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1" Classes="Card">
+                    <DockPanel Margin="10">
+                        <TextBlock DockPanel.Dock="Top" Text="COMPÉTENCES" Classes="Header" Margin="0,0,0,5"/>
+                        <ScrollViewer>
+                            <TextBlock Name="Skills" Text="Liste des talents..." TextWrapping="Wrap"/>
+                        </ScrollViewer>
+                    </DockPanel>
+                </Border>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>
